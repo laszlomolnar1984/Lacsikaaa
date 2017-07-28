@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="icon" type="image/gif/png" href="images/beerIcon.png">
+	<title>BEERShop - "Legszebb öröm, a söröm"</title>
+	<link rel="stylesheet" type="text/css" href="beers.css">
+	
+</head>
+<body>
+<header>
+<div align="center"><img src="images/header.png"></header></div>
+<div align="right" class="jobbFelso">
+	<span> pompomBEERs<sup>&copy </sup>&nbsp Ltd. 2017 |</span>
+</div>
+</header>
+
+<div>
+<table width="800px" align="center">
+	<thead>
+		<tr>
+			<td><input class="button" type="textbox" id="textBoxSearch" placeholder="Keresendő szöveg" style="width:140px"></td>
+			<td><input class="button" type="button" onclick="kereses();" value="Keresés" style="width:100%"></td>
+			<td><input class="button" type="button" onclick="hello(event);" value="Belépés" style="width:100%"></td>
+			<td><input class="button" type="button" value="Kapcsolat" style="width:100%"></td>
+			<td><input class="button" type="button" onclick="rendezesArNovekvo();" value="Kérdésed van?" style="width:100%"></td>
+		</tr>
+	</thead>
+</table>
+</div>
+<br><br>
+<div>
+<div style="float: left;" class="divbal">
+<i><b>A kosár tartalma: </i></b><br>
+	<ol id="kosar">
+	<li></li>
+	</ol>
+	Végösszeg: <span id="vegOsszeg"></span><hr> 
+	<input type="button" value="Megrendelem" onclick="print();">
+	<input type="button" value="Kosár ürítése" onclick="kosarUrit();">
+</div>
+<div style="float: right;" class="divjobb">
+<i><b>Rendezés </i></b><br><br>
+	<form>
+				<input type="radio" name="rendezes" id="arDown">Ár szerint - &darr;</option><br>
+				<input type="radio" name="rendezes"  id="arUp">Ár szerint - &uarr;</option><br>
+				<input type="radio" name="rendezes"  id="alkDown">Alkoholtartalom szerint - &darr;</option><br>
+				<input type="radio" name="rendezes"  id="alkUp">Alkoholtartalom szerint - &uarr;</option><br>
+			</form>
+</div>
+
+<table width="800px">
+	<thead>
+		<tr>
+			<th colspan="5">Aktuális ajánlataink
+			<form>
+			<select>
+				<option>Rendezés</option>
+				<option id="arDown">Rendezés ár szerint - &darr;</option>
+				<option id="arUp">Rendezés ár szerint - &uarr;</option>
+				<option id="alkDown">Rendezés alkoholtartalom szerint - &darr;</option>
+				<option id="alkUp">Rendezés alkoholtartalom szerint - &uarr;</option>
+			</select>
+			<input type="button" value="OK"></input>
+			</form>
+			
+			</th>
+		</tr>
+	</thead>	
+	<tbody>
+			<!-- ide jön a generált táblázat az összes elemmel -->
+	</tbody>
+</table>
+</div>
+
+<footer>
+<div align="center">
+	
+		<p>pompomBEERs Kft.</p>
+		<p>1111 Budapest, Bartók Béla út. 63.</p>
+		<p>+36 30 349 65 89</p>
+		<p>beershop@pompomBEERS.hu</p><br>
+
+				
+		<p>Kérdésed van? Írj Nekünk!</p>
+		<p>Neved: <input type="text" class="right"><br><br></p>
+		<p>e-mail címed: <input type="email"><br><br></p>
+		<p>Üzenet: <br><textarea rows="5" cols="30"></textarea><br><br></p>
+		<input type="submit" value="Elküld">
+		
+	</div>	
+</footer>
+<div align="center"><br>
+<a href="#">Ugrás az oldal tetejére!</a>
+</div>
+<script type="text/javascript" src="beers.js">
+</script>
+</body>
+</html>
