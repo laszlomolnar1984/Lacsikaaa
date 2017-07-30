@@ -110,9 +110,6 @@ th{
 .right{
 	vertical-align:right;
 }
-footer{
-	position: center;
-}
 
 a{
 	text-decoration:none;
@@ -120,4 +117,16 @@ a{
 }
 img.sor{
 	height: 150px;
+}
+
+.kerdes{
+	width: 300px;
+	border-radius: 5px;
+    border-color:gray;
+    border-width: 1px;
+    border-style:solid;
+	padding: 10px;
+	background-color: rgb(232, 232, 232);
+	margin: auto;
+    width: 20%;
 }
