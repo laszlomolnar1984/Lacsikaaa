@@ -3313,15 +3313,15 @@ for(var i=0; i < aktualisTomb.length; i++)
 		sorAdat += '</tr>';
 		sorAdat += '<tr>';
 		sorAdat += '<td class="bold" id="beerAr" + i>' + aktualisTomb[i].price + " .- Ft" + '</td>';	
-		sorAdat += '<td class="darabSzamlalo" colspan="4">'+'<input type="number" id="quantity" min="0" max="10">'+ " db " + '<input type="button" value="Kosárba" onclick="kosarba();" class="button"></td>';
+		sorAdat += '<td colspan="4">' + '<input type="button" value="Kosárba" onclick="kosarba();" class="button" id="kosarba"></td>';
 		sorAdat += '</tr>';
 	}
 sorok.innerHTML = sorAdat;
 }
 
 //sorba rendezések
-document.getElementById("arDown").addEventListener("click", rendezesArNovekvo);
-document.getElementById("arUp").addEventListener("click", rendezesArCsokkeno);
+document.getElementById("arUp").addEventListener("click", rendezesArNovekvo);
+document.getElementById("arDown").addEventListener("click", rendezesArCsokkeno);
 document.getElementById("alkUp").addEventListener("click", rendezesAlkNovekvo);
 document.getElementById("alkDown").addEventListener("click", rendezesAlkCsokkeno);
 
@@ -3369,23 +3369,27 @@ aktualisTomb.sort(function(a, b){
 buildTable();
 }
 
-/*
-function hello(event){
+
+/*function hello(event){
 	var a = event.target.nodeName;
 	console.log(a);
 }*/
 
 // berakjuk a kiválasztott terméket a kosárba
+	var osszesen = 0;
 function kosarba(){
-	var kivalasztottSor = document.querySelectorAll('beerName').innerText;
 	var kosar = document.getElementById('kosar');
-	kosar.innerHTML = kivalasztottSor;
+	var osszeg = document.getElementById('vegOsszeg').value;
 
-	var kivalasztottSorAra = document.getElementById('beerAr').innerText;
-	var osszeg = document.getElementById('vegOsszeg')
-	vegOsszeg.innerHTML = kivalasztottSorAra;
+	for (i = 0; i < aktualisTomb.length; i++){
+		kosar.innerHTML += aktualisTomb[i].name + '<br>';
+		osszesen += aktualisTomb[i].price;
+		vegOsszeg.innerHTML = osszesen;
+		break;
+	}
 
 }
+	
 
 // kosárt tartalmának törlése
 function kosarUrit(){
@@ -3394,17 +3398,17 @@ function kosarUrit(){
 	var kivalasztottSorAra = document.getElementById('vegOsszeg');
 	kivalasztottSorAra.innerHTML = "";
 }
-
+// jump to bottom of the page
 function toBottom()
 {
 window.scrollTo(0, document.body.scrollHeight);
 }
-
+// contact data in alert window
 function contact(){
 	alert("pompomBEERs Kft. \n 1111 Budapest, Bartók Béla út. 63. \n +36 30 349 65 89 \n beershop@pompomBEERS.hu");
 }
 
-
+//üzenet ellenőrzése (kitöltött mezők)
 function uzenetControl(){
 	var nev = document.getElementById('nev').value;
 	var email = document.getElementById('email').value;
@@ -3415,7 +3419,44 @@ function uzenetControl(){
 		uzenetKuldes();
 	}
 }
-
+//üzenet elküldése JSON formátumban
 function uzenetKuldes(){
-	
+	var obj = {
+			neve: nev.value,
+			emailCime: email.value,
+			uzenetSzovege: uzenet.value			
+			};
+	var elkuldhetoUzenet = JSON.stringify(obj, null, 4); 
+		console.log(elkuldhetoUzenet);
+}
+//rendelés elküldése JSON formátumban
+function rendelesSend(){
+	var nevSor = document.getElementById('kosar').innerText;
+		var arSor = document.getElementById('vegOsszeg').innerText;
+		var obj = {
+			neve: nevSor,
+			osszeg: arSor			
+			};
+	var rendeles = JSON.stringify(obj, null, 4); 
+		console.log(rendeles);
+	document.getElementById('rend').innerText = rendeles;
+		
+	var rendeles2 = JSON.parse(rendeles);
+		console.log(rendeles2);
+}
+
+// admin belépés
+function adminEnter(){
+	var userName = window.prompt('Felhasználónév:');
+	var userPassword = window.prompt('Jelszó');
+		if (userName == 'admin' && userPassword == 'admin'){
+			alert('Sikeres azonosítás');
+			}
+			
+		}
+
+function torles(){
+	document.getElementById('nev').value = "";
+	document.getElementById('email').value = "";
+	document.getElementById('uzenet').value = "";
 }

@@ -17,12 +17,12 @@
 </header>
 
 <div>
-<table width="800px" align="center">
+<table class="minden" width="800px" align="center">
 	<thead>
 		<tr>
 			<td><input class="button" type="textbox" id="textBoxSearch" placeholder="Keresendő szöveg" style="width:140px"></td>
 			<td><input class="button" type="button" onclick="kereses();" value="Keresés" style="width:100%"></td>
-			<td><input class="button" type="button" onclick="hello(event);" value="Belépés" style="width:100%"></td>
+			<td><input class="button" type="button" onclick="adminEnter();" value="Belépés" style="width:100%"></td>
 			<td><input class="button" type="button" onclick="contact();" value="Kapcsolat" style="width:100%"></td>
 			<td><input class="button" type="button" onclick="toBottom();" value="Kérdésed van?" style="width:100%"></td>
 		</tr>
@@ -30,15 +30,17 @@
 </table>
 </div>
 <br><br>
-<div>
+<div class="minden">
 <div style="float: left;" class="divbal">
 <i><b>A kosár tartalma: </i></b><br>
 	<ol id="kosar">
 	<li></li>
+	<li id="kosarDb"></li>
 	</ol>
-	Végösszeg: <span id="vegOsszeg"></span><hr> 
-	<input type="button" value="Megrendelem" onclick="print();" class="button">
+	Végösszeg: <span id="vegOsszeg"></span> .- Ft<hr> 
+	<input type="button" value="Megrendelem" onclick="rendelesSend();print();" class="button">
 	<input type="button" value="Kosár ürítése" onclick="kosarUrit();" class="button">
+	<!--<input type="button" value="Megrendelem" class="button" id="kosarba"> -->
 </div>
 <div style="float: right;" class="divjobb">
 <i><b>Rendezés </i></b><br><br>
@@ -50,7 +52,7 @@
 			</form>
 </div>
 
-<table width="800px">
+<table width="800px" id="myTable">
 	<thead>
 		<tr>
 			<th colspan="5">Aktuális ajánlataink
@@ -70,10 +72,12 @@
 		<p align="right">e-mail címed: <input type="email" required  id="email"><br></p>
 		<p>Üzenet:</p><textarea rows="5" cols="35"  id="uzenet"></textarea><br><br>
 		<input type="submit" value="Elküld" class="button" onclick="uzenetControl()">
+		<input type="reset" value="Törlés" class="button" onclick="torles()">
 </div>	
-<div align="center"><br>
+<div align="center" class="minden"><br>
 <a href="#">Ugrás az oldal tetejére!</a>
 </div>
+<div id="rend"></div>
 <script type="text/javascript" src="beers.js">
 </script>
 </body>

@@ -130,3 +130,11 @@ img.sor{
 	margin: auto;
     width: 20%;
 }
+
+@media print
+{    
+    .minden, .kerdes
+    {
+        display: none !important;
+    }
+}
