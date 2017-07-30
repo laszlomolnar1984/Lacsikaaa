@@ -3419,17 +3419,20 @@ function uzenetControl(){
 		uzenetKuldes();
 	}
 }
-//üzenet elküldése JSON formátumban
+//üzenet elküldése JSON formátumban - console-ban kiíratva
 function uzenetKuldes(){
 	var obj = {
 			neve: nev.value,
 			emailCime: email.value,
 			uzenetSzovege: uzenet.value			
 			};
-	var elkuldhetoUzenet = JSON.stringify(obj, null, 4); 
-		console.log(elkuldhetoUzenet);
+	var elkuldhetoUzenet = JSON.stringify(obj, null, 4);
+			console.log(elkuldhetoUzenet);
+	
+	var elkuldhetoUzenet2 = JSON.parse(elkuldhetoUzenet);
+			console.log(elkuldhetoUzenet2);
 }
-//rendelés elküldése JSON formátumban
+//rendelés elküldése JSON formátumban - console-ban kiíratva
 function rendelesSend(){
 	var nevSor = document.getElementById('kosar').innerText;
 		var arSor = document.getElementById('vegOsszeg').innerText;
@@ -3439,7 +3442,6 @@ function rendelesSend(){
 			};
 	var rendeles = JSON.stringify(obj, null, 4); 
 		console.log(rendeles);
-	document.getElementById('rend').innerText = rendeles;
 		
 	var rendeles2 = JSON.parse(rendeles);
 		console.log(rendeles2);
@@ -3455,6 +3457,7 @@ function adminEnter(){
 			
 		}
 
+// üzenet mezők törlése		
 function torles(){
 	document.getElementById('nev').value = "";
 	document.getElementById('email').value = "";
